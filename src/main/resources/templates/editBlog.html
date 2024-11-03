@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head><title>Редактировать блог</title></head>
+<body>
+<h2>Редактировать блог</h2>
+<form action="/blog/edit/${blog.id}" method="post">
+  <label>Заголовок: <input type="text" name="title" value="${blog.title}" required></label><br>
+  <label>Контент: <textarea name="content" required>${blog.content}</textarea></label><br>
+  <button type="submit">Сохранить</button>
+</form>
+</body>
+</html>
