@@ -5,16 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard</title>
   <style>
-    body {
-      font-family: 'Arial', sans-serif;
-      background-color: #eef2f3;
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+     body {
+       font-family: 'Arial', sans-serif;
+       background-color: #eef2f3;
+       margin: 0;
+       padding: 0;
+       height: 100vh;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+     }
     .container {
       max-width: 800px;
       width: 100%;
@@ -78,18 +78,19 @@
     button:hover {
       background-color: #c82333;
     }
+
   </style>
 </head>
 <body>
 <div class="container">
-  <h1>Добро пожаловать, <span th:text="${username}"></span>!</h1> <!-- Используйте Thymeleaf синтаксис для отображения имени пользователя -->
+  <h1>Добро пожаловать, <span th:text="${username}">User</span>!</h1>
 
   <h2>Управление блогом</h2>
   <ul>
-    <li><a href="/blog/add">Добавить блог</a></li>
-    <li><a href="/blog/edit">Редактировать блог</a></li>
-    <li><a href="/blog/delete">Удалить блог</a></li>
-    <li><a href="/blog/view">Просмотреть все блоги</a></li>
+    <li><a th:href="@{/blog/add}">Добавить блог</a></li>
+    <li><a th:href="@{/blog/edit/{id}(id=${blogId})}">Редактировать блог</a></li>
+    <li><a th:href="@{/blog/delete/{id}(id=${blogId})}">Удалить блог</a></li>
+    <li><a th:href="@{/blog}">Просмотреть все блоги</a></li>
   </ul>
 
   <form class="logout-form" action="/logout" method="post">
@@ -98,3 +99,4 @@
 </div>
 </body>
 </html>
+

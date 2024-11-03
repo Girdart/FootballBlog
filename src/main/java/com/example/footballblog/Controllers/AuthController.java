@@ -1,9 +1,8 @@
 package com.example.footballblog.Controllers;
 
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.context.SecurityContextHolder;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,7 +26,7 @@ public class AuthController {
         if (authentication != null && authentication.isAuthenticated()) {
             String username = authentication.getName();
             model.addAttribute("username", username);
-            // Здесь можно добавить любую другую необходимую логику, связанную с блогом
+
             return "dashboard"; // Возвращаем имя шаблона для страницы после входа
         }
         // Если пользователь не аутентифицирован, перенаправляем на страницу логина

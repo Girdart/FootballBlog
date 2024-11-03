@@ -16,6 +16,7 @@ import java.util.Optional;
 @Controller
 @RequestMapping("/blog")
 public class BlogController {
+    @Autowired
     UserRepository userService;
     @Autowired
     private BlogRepository blogRepository;
@@ -27,12 +28,12 @@ public class BlogController {
     @GetMapping
     public String viewAllBlogs(Model model) {
         model.addAttribute("blogs", blogRepository.findAll());
-        return "viewBlogs";
+        return "blog";
     }
 
     @GetMapping("/add")
     public String showAddBlogForm(Model model, Principal principal) {
-        // Предполагаем, что у вас есть сервис UserService для получения пользователя по имени
+
 
         Optional<User> user = userService.findByUsername(principal.getName());
         model.addAttribute("userId", user.get().getId());

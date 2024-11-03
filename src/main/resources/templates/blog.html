@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>All Blogs</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #333;
+      text-align: center;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      background: #fff;
+      margin: 10px 0;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      transition: box-shadow 0.3s;
+    }
+
+    li:hover {
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    a {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 15px;
+      background-color: #28a745;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    a:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+<h1>All Blogs</h1>
+<ul>
+  <th:block th:each="blog : ${blogs}">
+    <li th:text="${blog.title}">Blog Title</li>
+  </th:block>
+</ul>
+<a th:href="@{/blog/add}">Create New Blog</a>
+<a th:href="@{/dashboard}">Back to dashboard</a>
+</body>
+</html>
