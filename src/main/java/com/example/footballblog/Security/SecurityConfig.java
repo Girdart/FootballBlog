@@ -45,8 +45,8 @@ public class SecurityConfig {
                 )
                 .rememberMe(rememberMe -> rememberMe
                         .key("uniqueAndSecretKey") // Уникальный ключ для безопасности
-                        .tokenValiditySeconds(86400) // Длительность действия cookies (например, 1 день)
-                        .userDetailsService(userDetailsService) // Указываем сервис для загрузки пользователей
+                        .tokenValiditySeconds(86400) // Длительность действия cookies
+                        .userDetailsService(userDetailsService)
                 )
                 .csrf(csrf -> csrf.disable()); // Отключаем CSRF для упрощения
 
