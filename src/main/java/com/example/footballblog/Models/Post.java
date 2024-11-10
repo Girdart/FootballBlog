@@ -1,10 +1,12 @@
 package com.example.footballblog.Models;
 
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 
 import java.time.LocalDateTime;
 
@@ -37,8 +39,10 @@ public class Post {
     public Post(Blog blog, String title, String description, Float rating) {
         this.blog = blog;
         this.title = title;
-        this.description = description;
+        setDescription(description);
         this.rating = rating;
         this.createdAt = LocalDateTime.now();
     }
+
+
 }

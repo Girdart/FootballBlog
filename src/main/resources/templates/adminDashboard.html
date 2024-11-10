@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+</head>
+<body>
+<h1>Admin Dashboard</h1>
+
+<h2>Users</h2>
+<ul>
+  <li th:each="user : ${users}">
+    <span th:text="${user.username}"></span>
+    <a th:href="@{/admin/editUser/{id}(id=${user.id})}">Edit</a>
+    <a th:href="@{/admin/deleteUser/{id}(id=${user.id})}">Delete</a>
+  </li>
+</ul>
+
+<h2>Blogs</h2>
+<ul>
+  <li th:each="blog : ${blogs}">
+    <span th:text="${blog.title}"></span>
+    <a th:href="@{/admin/editBlog/{id}(id=${blog.id})}">Edit</a>
+    <a th:href="@{/admin/deleteBlog/{id}(id=${blog.id})}">Delete</a>
+  </li>
+</ul>
+
+<h2>Posts</h2>
+<ul>
+  <li th:each="post : ${posts}">
+    <span th:text="${post.title}"></span>
+    <a th:href="@{/admin/editPost/{id}(id=${post.id})}">Edit</a>
+    <a th:href="@{/admin/deletePost/{id}(id=${post.id})}">Delete</a>
+  </li>
+</ul>
+</body>
+</html>

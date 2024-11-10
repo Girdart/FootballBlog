@@ -3,14 +3,87 @@
 <head>
   <meta charset="UTF-8">
   <title>Добавить блог</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .form-container {
+      max-width: 500px;
+      width: 100%;
+      padding: 20px;
+      background-color: #ffffff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+      font-size: 1.8em;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      color: #555;
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1em;
+    }
+
+    textarea {
+      resize: vertical;
+      height: 100px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+  </style>
 </head>
 <body>
-<h2>Добавить блог</h2>
-<form action="/blog/add" method="post">
-  <input type="hidden" th:value="${userId}" name="userId">
-  <label>Заголовок: <input type="text" name="title" required></label><br>
-  <label>Контент: <textarea name="content" required></textarea></label><br>
-  <button type="submit">Добавить</button>
-</form>
+<div class="form-container">
+  <h2>Добавить блог</h2>
+  <form action="/blog/add" method="post">
+    <input type="hidden" th:value="${userId}" name="userId">
+    <label for="title">Заголовок:</label>
+    <input type="text" id="title" name="title" required>
+
+    <label for="content">Контент:</label>
+    <textarea id="content" name="content" required></textarea>
+
+    <button type="submit">Добавить</button>
+  </form>
+</div>
 </body>
 </html>
+

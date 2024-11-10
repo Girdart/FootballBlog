@@ -54,7 +54,10 @@
 <h1>All Blogs</h1>
 <ul>
   <th:block th:each="blog : ${blogs}">
-    <li th:text="${blog.title}">Blog Title</li>
+    <li>
+      <span th:text="${blog.title}">Blog Title</span>
+      <a th:href="@{/blog/view/{id}(id=${blog.id})}">Подробнее</a>
+    </li>
   </th:block>
 </ul>
 <a th:href="@{/blog/add}">Create New Blog</a>

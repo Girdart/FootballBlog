@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title th:text="${blog.title}">Blog Details</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #ffffff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+
+    h1 {
+      font-size: 2em;
+      color: #444;
+      border-bottom: 2px solid #28a745;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+
+    .post-list {
+      list-style-type: none;
+      padding: 0;
+      margin: 20px 0;
+    }
+
+    .post-item {
+      background: #fdfdfd;
+      margin: 15px 0;
+      padding: 15px;
+      border-left: 4px solid #28a745;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .post-title {
+      font-size: 1.2em;
+      color: #333;
+      margin: 0;
+    }
+
+    .post-date {
+      font-size: 0.9em;
+      color: #777;
+      margin-top: 5px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-top: 15px;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 20px;
+      color: #28a745;
+      text-decoration: none;
+    }
+
+    .back-link:hover {
+      color: #218838;
+      text-decoration: underline;
+    }
+
+    .add-post-link {
+      display: inline-block;
+      margin-top: 20px;
+      background-color: #007bff;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+
+    .add-post-link:hover {
+      background-color: #0056b3;
+    }
+
+    .delete-button {
+      background-color: #dc3545;
+    }
+
+    .delete-button:hover {
+      background-color: #c82333;
+    }
+
+    .edit-link {
+      display: inline-block;
+      margin-top: 10px;
+      background-color: #ffc107;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+
+    .edit-link:hover {
+      background-color: #e0a800;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1 th:text="${blog.title}">Blog Title</h1>
+  <p th:text="${blog.content}">Blog Content</p>
+
+  <h2>Posts</h2>
+  <ul class="post-list">
+    <li th:each="post : ${posts}" class="post-item">
+      <h3 class="post-title" th:text="${post.title}">Post Title</h3>
+      <p th:text="${post.description}">Post Description</p>
+    </li>
+  </ul>
+
+  <a th:href="@{/blog/view/{id}/addPost(id=${blog.id})}" class="add-post-link">Add new Post</a>
+  <a th:href="@{/blog/edit/{id}(id=${blog.id})}" class="edit-link">Edit Blog</a>
+
+  <!-- Кнопка для удаления блога -->
+  <button type="button" class="delete-button" th:onclick="'deleteBlog(' + ${blog.id} + ')'">Удалить блог</button>
+
+  <a th:href="@{/blog}" class="back-link">Назад ко всем блогам</a>
+</div>
+
+<script>
+  function deleteBlog(blogId) {
+    fetch(`/blog/delete/${blogId}`, {
+      method: 'POST'
+    })
+            .then(response => {
+              if (response.ok) {
+                window.location.href = '/blog'; // Перенаправление на страницу со списком всех блогов
+              } else {
+                alert('Ошибка при удалении блога');
+              }
+            });
+  }
+</script>
+</body>
+</html>
